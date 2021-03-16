@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>正方体</title>
+		<style type="text/css">
+			html body {
+				margin: 0;
+				padding: 0;
+			}
+
+			body {
+				background: radial-gradient(200% 100% at bottom center, #f7f7b6, #e96f92, #1b2947);
+				background: radial-gradient(220% 105% at top center, #1b2947 10%, #755117d 40%, #e96f92 65%, #f7f7b6);
+				background-attachment: fixed;
+			}
+
+			#box {
+				text-align: center;
+				line-height: 200px;
+				width: 200px;
+				height: 200px;
+				border: 1px solid black;
+				/* 设置圆角  前为 水平的 后为 垂直的  依次为 左上 右上 右下 右上 顺时针*/
+				border-radius: 10px 20px 30px 40px / 40px 30px 20px 40px;
+
+				/* border-radius: 10px 20px / 10px */
+			}
+
+			.box {
+				width: 200px;
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				margin-left: -100px;
+				margin-top: -100px;
+				transform: translate(-50%, -50%);
+				transition: .5s;
+
+				/* 3D的空间 */
+				transform-style: preserve-3d;
+				/* 为了方便观察让3D舞台转动角度 */
+				/* transform: rotateX(20deg) rotateY(30deg); */
+				transform-origin: 100px 100px;
+				/* transform: rotateX(-30deg) rotateY(-80deg); */
+				/* /动画的名称，执行时间，匀速运动，无限次数/ */
+				animation: rotationMainContainer 20s linear infinite;
+			}
+
+			.box div {
+				text-align: center;
+				/* line-height: 100px;
+				width: 100px;
+				height: 100px; */
+				position: absolute;
+				top: 0;
+				/* opacity: 0.6; */
+				transition: .5s;
+			}
+
+			.outside {
+				line-height: 200px;
+				width: 200px;
+				height: 200px;
+				opacity: 0.8;
+			}
+
+			.inside {
+				line-height: 100px;
+				width: 100px;
+				height: 100px;
+				opacity: 1;
+			}
+
+			.box:hover .con1 {
+				transform: translateZ(150px);
+			}
+
+			.box:hover .con2 {
+				transform: translateZ(-150px) rotateY(180deg);
+			}
+
+			.box:hover .con3 {
+				transform: translateY(-150px) rotateX(90deg);
+			}
+
+			.box:hover .con4 {
+				transform: translateY(150px) rotateX(-90deg);
+			}
+
+			.box:hover .con5 {
+				transform: translateX(-150px) rotateY(-90deg);
+			}
+
+			.box:hover .con6 {
+				transform: translateX(150px) rotateY(90deg);
+			}
+
+			.con1 {
+				/* 第一个面往前走 */
+				background: red;
+				transform: translateZ(100px);
+
+			}
+
+			.con2 {
+				/* 第二个面往后走 */
+				background: blue;
+				transform: translateZ(-100px) rotateY(180deg);
+				/*rotateY(180deg)  让正面朝外*/
+			}
+
+			.con3 {
+				/* 先往上位移150px  再绕着X轴转动90deg */
+				background: pink;
+				transform: translateY(-100px) rotateX(90deg);
+			}
+
+			.con4 {
+				/* 先往下位移150px,再绕着X轴转动90deg */
+				background: green;
+				transform: translateY(100px) rotateX(-90deg);
+			}
+
+			.con5 {
+				/* 先往左位移150px , 再绕着Y轴转动90deg */
+				background: rosybrown;
+				transform: translateX(-100px) rotateY(-90deg);
+			}
+
+			.con6 {
+				/* 先往右侧位移150px,再绕着Y轴转动90deg */
+				background: #000;
+				transform: translateX(100px) rotateY(90deg);
+			}
+
+			.con1-con {
+				/* 第一个面往前走 */
+				background: red;
+				transform: translateY(50px) translateX(50px) translateZ(50px);
+
+			}
+
+			.con2-con {
+				/* 第二个面往后走 */
+				background: blue;
+				transform: translateY(50px) translateX(50px) translateZ(-50px) rotateY(180deg);
+				/*rotateY(180deg)  让正面朝外*/
+			}
+
+			.con3-con {
+				/* 先往上位移150px  再绕着X轴转动90deg */
+				background: pink;
+				transform: translateY(0px) translateX(50px) rotateX(90deg);
+			}
+
+			.con4-con {
+				/* 先往下位移150px,再绕着X轴转动90deg */
+				background: green;
+				transform: translateY(100px) translateX(50px) rotateX(-90deg);
+			}
+
+			.con5-con {
+				/* 先往左位移150px , 再绕着Y轴转动90deg */
+				background: rosybrown;
+				transform: translateX(0px) translateY(50px) rotateY(-90deg);
+			}
+
+			/* x+25 y+25 */
+			.con6-con {
+				/* 先往右侧位移150px,再绕着Y轴转动90deg */
+				background: #000;
+				transform: translateX(100px) translateY(50px) rotateY(90deg);
+			}
+
+			@keyframes rotationMainContainer {
+				0% {
+					transform: rotateX(0deg) rotateY(0deg);
+					/* 元素围绕其X Y Z轴旋转的度数*/
+				}
+
+				100% {
+					transform: rotateX(360deg) rotateY(360deg);
+				}
+			}
+		</style>
+	</head>
+	<body style="background-color: gray;">
+		<div class="box">
+			<div class="con1 outside">
+				<img src="img/demo1/girl1.png" width="200" height="200">
+				<!-- <img src="img/demo1/psb1.jpg" width="200" height="200"> -->
+			</div>
+			<div class="con2 outside">
+				<img src="img/demo1/girl2.png" width="200" height="200">
+				<!-- <img src="img/demo1/psb2.jpg" width="200" height="200"> -->
+			</div>
+			<div class="con3 outside">
+				<img src="img/demo1/girl3.png" width="200" height="200">
+				<!-- <img src="img/demo1/psb3.jpg" width="200" height="200"> -->
+			</div>
+			<div class="con4 outside">
+				<img src="img/demo1/girl4.png" width="200" height="200">
+				<!-- <img src="img/demo1/psb4.jpg" width="200" height="200"> -->
+			</div>
+			<div class="con5 outside">
+				<img src="img/demo1/girl5.png" width="200" height="200">
+				<!-- <img src="img/demo1/psb5.jpg" width="200" height="200"> -->
+			</div>
+			<div class="con6 outside">
+				<img src="img/demo1/girl6.png" width="200" height="200">
+				<!-- <img src="img/demo1/psb6.jpg" width="200" height="200"> -->
+			</div>
+
+			<div class="con1-con inside">
+				<img src="img/demo1/girl7.png" width="100" height="100">
+			</div>
+			<div class="con2-con inside">
+				<img src="img/demo1/girl8.png" width="100" height="100">
+			</div>
+			<div class="con3-con inside">
+				<img src="img/demo1/girl9.png" width="100" height="100">
+			</div>
+			<div class="con4-con inside">
+				<img src="img/demo1/girl10.png" width="100" height="100">
+			</div>
+			<div class="con5-con inside">
+				<img src="img/demo1/girl11.png" width="100" height="100">
+			</div>
+			<div class="con6-con inside">
+				<img src="img/demo1/girl12.png" width="100" height="100">
+			</div>
+		</div>
+
+		<!-- <div id="box"></div> -->
+	</body>
+</html>

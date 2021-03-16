@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>linear-gradient</title>
+		<style type="text/css">
+			.login {
+				width: 200px;
+				height: 50px;
+
+				border-radius: 50px;
+				background: linear-gradient(30deg, blue, red);
+				/* background-image: linear-gradient(red, yellow, blue); */
+
+
+				/* 从上到下，蓝色渐变到红色 */
+				/* linear-gradient(blue, red); */
+
+				/* 渐变轴为45度，从蓝色渐变到红色 */
+				/* linear-gradient(45deg, blue, red); */
+
+				/* 从右下到左上、从蓝色渐变到红色 */
+				/* linear-gradient(to left top, blue, red); */
+
+				/* 从下到上，从蓝色开始渐变、到高度40%位置是绿色渐变开始、最后以红色结束 */
+				/* linear-gradient(0deg, blue, green 40%, red); */
+			}
+
+			/* 使用之前得设置宽高，-webkit-linear-gradient(参数1, 参数2, 参数3);*/
+			/*参数1表示渐变开始方向：可以写上下左右和角度（left | top | right|bottom|50deg|-50deg）等  */
+			/* 参数2可以设置两个值，一个代表渐变的起始颜色；一个为渐变的起始位置，可以填 像素或者百分比（正负数都可以） 代表从此位置开始渐变 */
+			/* 参数3可以设置两个值，一个代表渐的终止颜色；一个为渐变的结束位置，可以填 像素或者百分比（正负数都可以） 代表从此位置结束渐变 */
+
+			.div1 {
+				width: 600px;
+				height: 300px;
+				/* 写法1：0 0,100% 0 可以调节 */
+				/* background: -webkit-gradient(linear, 0 0,100% 0, from(blue), to(red)); */
+				/* 写法2: */
+				background: -webkit-linear-gradient(left, blue, red);
+				background: -moz-linear-gradient(left, blue, red);
+
+			}
+
+			.div2 {
+				margin: 50px 0;
+				width: 700px;
+				height: 300px;
+				/*background: -webkit-gradient(linear, 0 0, 100% 0, from(red), color-stop(0.17, orange), color-stop(0.33, yellow), color-stop(0.5, green), color-stop(0.67, blue), color-stop(0.83, cyan), to(purple));*/
+				background: -webkit-linear-gradient(left, red, orange, yellow, green, blue, cyan, purple);
+				background: -moz-linear-gradient(left, red, orange, yellow, green, blue, cyan, purple);
+				/* 现代浏览器通用：to left从purple渐变到pink 也可以写角度deg*/
+				/* 也可以写角度deg:  0deg代表从下到上 90deg代表从左到右*/
+				/* background: linear-gradient(to left,pink, purple); */
+
+			}
+
+			/*背景图片的渐变 background: linear-gradient(参数1,参数2,参数3),url(../img/01-3.jpg);*/
+			/*background的每个参数要用逗号隔开 */
+			/*背景图片的渐变要结合透明度rgb(0~255,0~255,0~255,0~1) */
+			.div3 {
+				margin: 50px 0;
+				width: 600px;
+				height: 400px;
+				/* background: -webkit-linear-gradient(left, rgba(2, 150, 100, 0.3), rgba(160, 32, 240, 0.8)), url(../img/me12.gif); */
+				background: -webkit-linear-gradient(45deg, rgba(2, 150, 100, 0.3), rgba(160, 32, 240, 0.8)), url(img/onepiece.jpg);
+				/* background-image: url(img/onepiece.jpg);
+				background-size: cover;
+				background-position: center center; */
+				background-size: cover;
+				background-position: center center; 
+				/* 现代浏览器通用：to left从purple渐变到pink */
+				/* 也可以写角度deg:  0deg代表从下到上 90deg代表从左到右*/
+				/* background: linear-gradient(to left,pink, purple) ; */
+				/* background: linear-gradient(to left,rgba(0,0,255,0.3)400px, rgba(160,32,240,0.8)),url(../img/01-3.jpg); */
+
+			}
+
+			/* 放射渐变background:radial-gradient  (参数1,参数2)*/
+			/* 参数1为center|ellipse 表示从中心开始 ellipse 的中心主颜色圈更大些*/
+			.CC {
+				margin-bottom: 10px;
+				width: 300px;
+				height: 400px;
+				background: -webkit-radial-gradient(center, red, yellow, blue, white);
+			}
+
+			.dd {
+				margin-bottom: 10px;
+				width: 300px;
+				height: 400px;
+				background: -webkit-radial-gradient(ellipse,red,white);
+				background: -moz-radial-gradient(ellipse,red,yellow,blue);
+				background: -webkit-radial-gradient(ellipse, rgba(255, 0, 0, 0.9), rgba(255, 255, 255, 0.4)), url(img/onepiece.jpg);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="login">
+
+		</div>
+
+		<div class="div1"></div>
+		<div class="div2"></div>
+		<div class="div3"></div>
+		<!-- 放射渐变 -->
+		<div class="CC">center</div>
+		<div class="dd">ellipse</div>
+	</body>
+</html>
